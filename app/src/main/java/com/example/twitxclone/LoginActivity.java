@@ -1,6 +1,7 @@
 package com.example.twitxclone;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -42,7 +43,19 @@ public class LoginActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-    }
+
+        View.OnClickListener listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signupButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.black)));
+                Intent intent = new Intent(v.getContext(), SignUpActivity.class);
+                startActivity(intent);
+            }
+        }; //end listener
+
+        signupButton.setOnClickListener(listener);
+
+    }// end on create
 
     public void signUp(View view) {
         Intent intent = new Intent(this, LoginActivity.class);
